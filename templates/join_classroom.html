@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Join Classroom</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="auth-page">
+
+<div class="container">
+    <h1>Join Classroom</h1>
+
+    <form method="POST">
+        <input type="text" name="code" placeholder="Enter Classroom Code" required>
+
+        <button type="submit">Join</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <p class="link">
+        <a href="/dashboard">← Back to Dashboard</a>
+    </p>
+</div>
+
+</body>
+</html>

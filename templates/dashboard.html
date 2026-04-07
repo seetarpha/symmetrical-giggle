@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <h1>Dashboard</h1>
+        <a class="logout" href="/logout">Logout</a>
+    </div>
+
+    <!-- Section Header -->
+    <div class="section-header">
+        <h2>Your Classrooms</h2>
+
+        {% if role == "teacher" %}
+            <a class="btn" href="/create_classroom">+ Create Classroom</a>
+        {% else %}
+            <a class="btn" href="/join_classroom">+ Join Classroom</a>
+        {% endif %}
+    </div>
+
+    <!-- Cards -->
+    <div class="card-grid">
+        {% for classroom in classrooms %}
+            <a href="/classroom/{{ classroom[0] }}" class="card">
+                <h3>{{ classroom[1] }}</h3>
+                <p class="code">Code: {{ classroom[3] }}</p>
+            </a>
+        {% endfor %}
+    </div>
+
+</div>
+
+</body>
+</html>

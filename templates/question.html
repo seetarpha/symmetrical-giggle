@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ q[2] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<div class="dashboard-container question-page">
+    <div class="top-bar">
+        <h1>{{ q[2] }}</h1>
+        <a class="logout" href="/classroom/{{ classroom_id }}">Back to Classroom</a>
+    </div>
+
+    <div class="question-content-card">
+        <img class="question-image" src="/{{ q[3] }}" alt="Question image">
+
+        {% if q[4] %}
+            <button class="toggle-btn" id="markscheme-toggle" onclick="toggleMarkscheme()">Show Markscheme</button>
+
+            <div id="markscheme" class="markscheme-panel" style="display:none;">
+                <img class="question-image" src="/{{ q[4] }}" alt="Markscheme image">
+            </div>
+        {% endif %}
+
+        {% if q[5] %}
+            <p class="question-comments">{{ q[5] }}</p>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function toggleMarkscheme() {
+    let el = document.getElementById("markscheme");
+    let btn = document.getElementById("markscheme-toggle");
+    const isHidden = el.style.display === "none";
+    el.style.display = isHidden ? "block" : "none";
+    btn.textContent = isHidden ? "Hide Markscheme" : "Show Markscheme";
+}
+</script>
+
+</body>
+</html>

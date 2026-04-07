@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Classroom</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="auth-page">
+
+<div class="container">
+    <h1>Create Classroom</h1>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Classroom Name" required>
+
+        <button type="submit">Create</button>
+    </form>
+
+    <p class="link">
+        <a href="/dashboard">← Back to Dashboard</a>
+    </p>
+</div>
+
+</body>
+</html>

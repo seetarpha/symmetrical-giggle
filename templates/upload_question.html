@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Question</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<div class="dashboard-container upload-page">
+    <div class="top-bar">
+        <h1>Upload Question</h1>
+        <a class="logout" href="/classroom/{{ classroom_id }}">Back to Classroom</a>
+    </div>
+
+    <div class="upload-card">
+        <form method="POST" enctype="multipart/form-data" class="upload-form">
+            <input type="text" name="title" placeholder="Question Title" required>
+
+            <p class="field-label">Question Image</p>
+            <input type="file" name="question_image" required>
+
+            <p class="field-label">Markscheme (optional)</p>
+            <input type="file" name="markscheme_image">
+
+            <textarea name="comments" placeholder="Optional comments"></textarea>
+
+            <p class="field-label">Tags (comma separated)</p>
+            <input type="text" name="tags" placeholder="e.g. algebra, vectors">
+
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
